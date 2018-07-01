@@ -23,5 +23,5 @@ mvn exec:java
 * Java
 * Maven
 * Unirest
-* Jakson
+* Jackson
 * Testing: Junit and Mockito
