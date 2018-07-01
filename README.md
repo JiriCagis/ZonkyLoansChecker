@@ -1,5 +1,5 @@
 # Zonky Loans Checker
-Terminal application periodically check new loans on the market company Zonky. Zonky is a Czech peer-to-peer online service that mediates online loans among people. For more information about working land you can visit [web](https://zonky.cz/). 
+Terminal application periodically check new loans on the market company Zonky. Company is a Czech peer-to-peer online service that mediates online loans among people. You can visit [web](https://zonky.cz/) for more information about working peer-to-peer land. 
 Application show today added loans after start and it check every 5 minutes whether was add new loans on market. If market contains new loans after time interval, application print new items into terminal.
 
 ### Note: 
