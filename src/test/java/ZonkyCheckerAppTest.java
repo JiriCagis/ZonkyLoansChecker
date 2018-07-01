@@ -68,8 +68,8 @@ public class ZonkyCheckerAppTest {
             loan.setName("Name"+i);
             loan.setAmount(BigDecimal.ONE);
             loan.setRating("AAA");
-            loan.setPublishDate(new Date());
-            loan.setDeadLineDate(new Date());
+            loan.setDatePublished(new Date());
+            loan.setDeadline(new Date());
             loan.setUserId("UserId" + i);
             loan.setNickName("NickName"+i);
             loans.add(loan);

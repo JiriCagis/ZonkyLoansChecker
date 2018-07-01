@@ -24,8 +24,8 @@ public class Loan implements Serializable {
     private BigDecimal amount;
     private String rating;
 
-    private Date publishDate;
-    private Date deadLineDate;
+    private Date datePublished;
+    private Date deadline;
 
     private String userId;
     private String nickName;
@@ -77,20 +77,20 @@ public class Loan implements Serializable {
         this.rating = rating;
     }
 
-    public Date getPublishDate() {
-        return publishDate;
+    public Date getDatePublished() {
+        return datePublished;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setDatePublished(Date datePublished) {
+        this.datePublished = datePublished;
     }
 
-    public Date getDeadLineDate() {
-        return deadLineDate;
+    public Date getDeadline() {
+        return deadline;
     }
 
-    public void setDeadLineDate(Date deadLineDate) {
-        this.deadLineDate = deadLineDate;
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
     public String getUserId() {
@@ -121,8 +121,8 @@ public class Loan implements Serializable {
                 Objects.equals(story, loan.story) &&
                 Objects.equals(amount, loan.amount) &&
                 Objects.equals(rating, loan.rating) &&
-                Objects.equals(publishDate, loan.publishDate) &&
-                Objects.equals(deadLineDate, loan.deadLineDate) &&
+                Objects.equals(datePublished, loan.datePublished) &&
+                Objects.equals(deadline, loan.deadline) &&
                 Objects.equals(userId, loan.userId) &&
                 Objects.equals(nickName, loan.nickName);
     }
@@ -130,7 +130,7 @@ public class Loan implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, story, amount, rating, publishDate, deadLineDate, userId, nickName);
+        return Objects.hash(id, name, story, amount, rating, datePublished, deadline, userId, nickName);
     }
 
     @Override
@@ -140,8 +140,8 @@ public class Loan implements Serializable {
                 ", \n\tstory='" + story + '\'' +
                 ", \n\tamount=" + amount +
                 ", \n\trating='" + rating + '\'' +
-                ", \n\tpublishDate=" + publishDate +
-                ", \n\tdeadLineDate=" + deadLineDate +
+                ", \n\tdatePublished=" + datePublished +
+                ", \n\tdeadline=" + deadline +
                 ", \n\tuserId='" + userId + '\'' +
                 ", \n\tnickName='" + nickName + '\'' +
                 "\n}\n";
