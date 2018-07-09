@@ -10,6 +10,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import model.Loan;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import util.DateUtil;
 
 import java.io.IOException;
@@ -19,22 +21,20 @@ import java.util.List;
 /**
  * Created by Jiří Cága
  */
+@Component
 public class ZonkyMarketServiceImpl implements ZonkyMarketService {
 
     private final static Logger LOGGER = Logger.getLogger(ZonkyMarketServiceImpl.class);
-    private final String MARKET_PLACE_URL;
 
+    @Value("${marketPlaceURL}")
+    private String marketPlaceURL;
 
-
-    public ZonkyMarketServiceImpl(String marketPlaceURL) {
-        this.MARKET_PLACE_URL = marketPlaceURL;
-    }
 
     public List<Loan> getAllPublishedLoans() {
         LOGGER.debug("Zonky market service start fetch all published loans.");
 
         try {
-            HttpResponse<JsonNode> jsonResponse = Unirest.get(MARKET_PLACE_URL)
+            HttpResponse<JsonNode> jsonResponse = Unirest.get(marketPlaceURL)
                     .queryString("X-Order","-datePublished")
                     .asJson();
             List<Loan> result = convertJsonArrayOfLoansToList(jsonResponse.getBody().toString());
@@ -56,7 +56,7 @@ public class ZonkyMarketServiceImpl implements ZonkyMarketService {
         LOGGER.debug("Zonky market service start fetch published loans after " + date + ".");
 
         try {
-            HttpResponse<JsonNode> jsonResponse = Unirest.get(MARKET_PLACE_URL)
+            HttpResponse<JsonNode> jsonResponse = Unirest.get(marketPlaceURL)
                     .queryString("datePublished__gte",DateUtil.getISO8601StringForDate(date))
                     .queryString("X-Order","-datePublished")
                     .asJson();
@@ -78,5 +78,14 @@ public class ZonkyMarketServiceImpl implements ZonkyMarketService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper.readValue(jsonString, new TypeReference<List<Loan>>(){});
+    }
+
+    // Getters and setters
+    public String getMarketPlaceURL() {
+        return marketPlaceURL;
+    }
+
+    public void setMarketPlaceURL(String marketPlaceURL) {
+        this.marketPlaceURL = marketPlaceURL;
     }
 }
