@@ -11,13 +11,13 @@ You can specify your own check time or update URL to Zonky API in file **zonkyLo
 
 ## How to build?
 ```
-mvn clean compile assembly:single
+mvn clean package
 ```
 
 ## How to run?
 ```
 cd target
-java -jar ZonkyLoansChecker-1.1-SNAPSHOT-jar-with-dependencies.jar
+java -jar ZonkyLoansChecker-1.1-SNAPSHOT.jar 
 ```
 
 ## Technologies
