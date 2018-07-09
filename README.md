@@ -22,6 +22,7 @@ java -jar ZonkyLoansChecker-1.1-SNAPSHOT.jar
 
 ## Technologies
 * Java
+* Spring Boot
 * Maven
 * Unirest
 * Jackson
