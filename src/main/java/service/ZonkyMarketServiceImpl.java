@@ -57,7 +57,7 @@ public class ZonkyMarketServiceImpl implements ZonkyMarketService {
 
         try {
             HttpResponse<JsonNode> jsonResponse = Unirest.get(MARKET_PLACE_URL)
-                    .queryString("datePublished__gt",DateUtil.getISO8601StringForDate(date))
+                    .queryString("datePublished__gte",DateUtil.getISO8601StringForDate(date))
                     .queryString("X-Order","-datePublished")
                     .asJson();
             List<Loan> result = convertJsonArrayOfLoansToList(jsonResponse.getBody().toString());
