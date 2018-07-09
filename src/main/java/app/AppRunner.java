@@ -23,7 +23,7 @@ public class AppRunner {
         Properties configProperties = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream("src/main/resources/zonkyLoansChecker.properties");
+            input = ClassLoader.getSystemResourceAsStream("zonkyLoansChecker.properties");
 
             // load a properties file
             configProperties.load(input);
